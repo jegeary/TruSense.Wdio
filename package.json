@@ -1,0 +1,37 @@
+{
+  "name": "trusense.wdio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./node_modules/typescript/lib/tsc.js && node ./node_modules/@wdio/cli/bin/wdio wdio.conf.js && node ./node_modules/rimraf/bin.js dist",
+    "babel": "babel test -d lib",
+    "check-types": "tsc"
+  },
+  "author": "Jarrod Geary",
+  "license": "ISC",
+  "dependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.5",
+    "@types/node": "^10.12.18",
+    "@wdio/local-runner": "^5.2.8",
+    "chai": "^4.2.0",
+    "source-map-support": "^0.5.9",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.2.2",
+    "webdriverio": "^5.2.8"
+  },
+  "devDependencies": {
+    "@wdio/cli": "^5.2.8",
+    "@wdio/dot-reporter": "^5.2.3",
+    "@wdio/logger": "^5.2.8",
+    "@wdio/mocha-framework": "^5.2.8",
+    "@wdio/runner": "^5.2.8",
+    "@wdio/spec-reporter": "^5.2.3",
+    "@wdio/sync": "^5.2.8",
+    "mocha": "^5.2.0",
+    "rimraf": "^2.6.3",
+    "ts-test-decorators": "0.0.5",
+    "tsconfig-paths": "^3.7.0"
+  }
+}
