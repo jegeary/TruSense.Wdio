@@ -21,6 +21,7 @@ class AccountSettingsPage extends Page {
     LastName(): WebdriverIO.Element<void> {
         return $(Selector.id('lastName'));
     }
+
     // Username
     UsernameEdit(): WebdriverIO.Element<void> {
         return $("//*[@data-selenium='account-username-edit']");
@@ -81,6 +82,29 @@ class AccountSettingsPage extends Page {
         return $(Selector.name('mobileNumber'));
     }
 
+    // Gender
+    GenderEdit(): WebdriverIO.Element<void> {
+        return $("//*[@data-selenium='account-gender-edit']");
+    }
+    GenderClose(): WebdriverIO.Element<void> {
+        return $("//*[@data-selenium='account-gender-close']");
+    }
+    GenderSave(): WebdriverIO.Element<void> {
+        return $("//*[@data-selenium='account-gender-save']");
+    }
+    GenderCancel(): WebdriverIO.Element<void> {
+        return $("//*[@data-selenium='account-gender-cancel']");
+    }
+    GenderDropdown(): WebdriverIO.Element<void> {
+        return $(Selector.name('genderId'));
+    }
+    ChooseGender() {
+        this.GenderEdit().click();
+        this.GenderDropdown().click();
+        this.GenderDropdown().selectByVisibleText('Male');
+        this.GenderSave().click();
+    }
+
     // Landline
     PhoneEdit(): WebdriverIO.Element<void> {
         return $("//*[@data-selenium='account-phone-edit']");
@@ -117,9 +141,32 @@ class AccountSettingsPage extends Page {
     GoogleAddress(): WebdriverIO.Element<void> {
         return $(Selector.class('pac-item'));
     }
+    Address(partialAddress: string): WebdriverIO.Element<void>[] {
+        return $$(Selector.elementWithPartialTextTag('p', partialAddress));
+    }
     
     open() {
-        super.open('/home')
+        super.open('/settings/account')
+    }
+
+    EditPassword(currentPassword: string, newPassword: string): void {
+        this.PasswordEdit().click();
+        this.NewPassword().clearValue();
+        this.NewPassword().setValue(newPassword);
+        this.ConfirmNewPassword().clearValue();
+        this.ConfirmNewPassword().setValue(newPassword);
+        this.ConfirmPassword().clearValue();
+        this.ConfirmPassword().setValue(currentPassword);
+        this.PasswordSave().click();
+    }
+
+    EditAddress(address: string): void {
+        this.AddressEdit().click();
+        this.HomeAddress().clearValue();
+        this.HomeAddress().setValue(address);
+        browser.pause(500);
+        this.GoogleAddress().click();
+        this.AddressSave().click();
     }
 }
 const AccountSettings = new AccountSettingsPage;

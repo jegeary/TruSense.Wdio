@@ -16,7 +16,7 @@ class TimelinePage extends Page {
         return $$(Selector.tag('ts-event-card'));
     }    
     open() {
-        super.open('/home')
+        super.open('/activity')
     }
         
 }

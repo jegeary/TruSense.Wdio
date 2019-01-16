@@ -75,7 +75,11 @@ class PeopleSettingsPage extends Page {
         return $(Selector.name('emailAddress-1'));
     }    
     open() {
-        super.open('/home')
+        super.open('/settings/people')
+    }
+
+    openEmergencyContacts() {
+        super.open('/settings/people/emergency-contacts');
     }
 }
 const PeopleSettings = new PeopleSettingsPage;

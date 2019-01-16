@@ -9,8 +9,7 @@ import DeviceDetails from '../../../pages/customer-app/home-details/device-detai
 
 describe('Pulse Page', () => {
     it('should allow me to Scroll timeline', () => {
-        help.SetupEnvironment(constants.LoginUrl);
-        help.LoginPassiveMonitoring();
+        Login.ExistingPassiveMonitoringUserLogin();
         const eventCard = Pulse.EventCards();
         eventCard[3].click();
         eventCard[10].scrollIntoView();

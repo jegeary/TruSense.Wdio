@@ -11,19 +11,13 @@ import AccountSettings from '../../../../pages/customer-app/settings/account-set
 import { before } from 'mocha';
 
 describe('Safty Zones Settings Page', () => {
-    before(() => {
-        help.SetupEnvironment(constants.LoginUrl);
-        help.LoginPassiveMonitoring();
-    });
     context('when I click into the settings page', () => {
-        before(() => {
-            UserAppMenu.MenuSettingElementXPath().click();
-        });
         context('and click into the Safety zones settings page', () => {
-            before(() => {
+            it('should allow me to show and hide maps', () => {
+                Login.ExistingPassiveMonitoringUserLogin();
+                UserAppMenu.MenuSettingElementXPath().click();
                 SettingsMenu.SafetyZonesSetting().click();
             });
-            it('should allow me to show and hide maps');
             it('should allow me to toggle notifications');
             it('should allow me to add a new safety zone');
             it('should allow me to search the maps');

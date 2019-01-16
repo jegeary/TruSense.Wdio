@@ -14,8 +14,8 @@ class RoomDetailsPage extends Page {
     AddNewFloorLink(): WebdriverIO.Element<void> {
         return $(Selector.linkText('Add New Floor'));
     }    
-    open() {
-        super.open('/home')
+    open(path: string = '/home/room/', roomId: number) {
+        super.open(path + roomId)
     }
 }
 const RoomDetails = new RoomDetailsPage;

@@ -1,24 +1,31 @@
 import Selector from "../../../helpers/selectors";
 import Page from "../../page";
+import errorMessages from "../../shared/error.messages";
 
 class NotificationSettingsPage extends Page {
     Toggles(): WebdriverIO.Element<void> {
         return $(Selector.class('toggle-table'));
     }
-    EmergencyCenterToggle(): WebdriverIO.Element<void> {
-        return $("//*[@data-selenium='settings-notifications-toggle']");
+    EmergencyCenterToggle(): WebdriverIO.Element<void>[] {
+        return $$("//*[@data-selenium='settings-notifications-toggle']");
     }
-    showThresholds(): WebdriverIO.Element<void> {
-        return $("//*[@data-selenium='settings-notifications-showThresholds']");
+    showThresholds(): WebdriverIO.Element<void>[] {
+        return $$("//*[@data-selenium='settings-notifications-showThresholds']");
     }
-    hideThresholds(): WebdriverIO.Element<void> {
-        return $("//*[@data-selenium='settings-notifications-hideThresholds']");
+    hideThresholds(): WebdriverIO.Element<void>[] {
+        return $$("//*[@data-selenium='settings-notifications-hideThresholds']");
     }
-    callCenterDetails(): WebdriverIO.Element<void> {
-        return $("//*[@data-selenium='notifications-callCenterDescription']");
+    callCenterDetails(): WebdriverIO.Element<void>[] {
+        return $$("//*[@data-selenium='notifications-callCenterDescription']");
     }
-    callCenterDetailsQuestionMark(): WebdriverIO.Element<void> {
-        return $("//*[@data-selenium='notifications-callCenterDescriptionQuestionMark']");
+    callCenterDetailsQuestionMark(): WebdriverIO.Element<void>[] {
+        return $$("//*[@data-selenium='notifications-callCenterDescriptionQuestionMark']");
+    }
+
+
+    // Add Users to Notifications
+    existingPersonSelect(): WebdriverIO.Element<void> {
+        return $(Selector.name('existingPerson'));
     }
     profileContactCard(): WebdriverIO.Element<void> {
         return $("//*[@data-selenium='settings-notifications-profile-contactCard']");
@@ -193,10 +200,15 @@ class NotificationSettingsPage extends Page {
         return $("//*[@data-selenium='settings-notifications-contacts-call-Geofence']");
     }
 
-    
-    open() {
-        super.open('/home')
+
+    SelectExistingPerson(): void {
+        this.existingPersonSelect().selectByIndex(0);
     }
+
+    open() {
+        super.open('/settings/notifications')
+    }
+    
 }
 const NotificationSettings = new NotificationSettingsPage;
 export default NotificationSettings;

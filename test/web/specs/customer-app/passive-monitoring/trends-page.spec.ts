@@ -11,8 +11,7 @@ import Trends from '../../../pages/customer-app/trends.page';
 
 describe('Trends Page', () => {
     it('should have the correct number of pie charts', () => {
-        help.SetupEnvironment(constants.LoginUrl);
-        help.LoginPassiveMonitoring();
+        Login.ExistingPassiveMonitoringUserLogin();
         UserAppMenu.MenuTrendsElementXPath().click();
         Trends.PieCharts()[1].waitForDisplayed();
         expect(Trends.PieCharts().length).to.equal(7);

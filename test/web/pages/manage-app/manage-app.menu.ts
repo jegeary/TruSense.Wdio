@@ -23,9 +23,6 @@ class ManageAppMenu extends Page {
     Logout(): WebdriverIO.Element<void> {
         return $(Selector.linkText('Logout'));
     }    
-    open() {
-        super.open('/home')
-    }
 }
 export default ManageAppMenu;
 

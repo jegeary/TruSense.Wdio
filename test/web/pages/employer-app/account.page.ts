@@ -15,7 +15,7 @@ class AccountPage extends Page {
         return $(Selector.elementWithCertainTextTag('button', 'Save Changes'));
     }    
     open() {
-        super.open('/home')
+        super.open('/employer/account');
     }
 }
 const Account = new AccountPage();

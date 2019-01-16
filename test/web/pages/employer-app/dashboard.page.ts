@@ -18,7 +18,7 @@ class DashboardPage extends Page {
         return $(Selector.partialClassName('blood-pressure-stats'));
     }    
     open() {
-        super.open('/home')
+        super.open('/employer/dashboard');
     }
 }
 const Dashboard = new DashboardPage();

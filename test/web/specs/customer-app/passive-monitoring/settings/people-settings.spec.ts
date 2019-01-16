@@ -9,24 +9,18 @@ import DeviceDetails from '../../../../pages/customer-app/home-details/device-de
 import SettingsMenu from '../../../../pages/customer-app/settings/settings.menu';
 import AccountSettings from '../../../../pages/customer-app/settings/account-settings.page';
 import { before } from 'mocha';
+import PeopleSettings from 'test/web/pages/customer-app/settings/people-settings.page';
 
 describe('People Settings Page', () => {
-    before(() => {
-        help.SetupEnvironment(constants.LoginUrl);
-        help.LoginPassiveMonitoring();
-    });
     context('when I click into the settings page', () => {
-        before(() => {
-            UserAppMenu.MenuSettingElementXPath().click();
-        });
         context('and click into the People settings page', () => {
-            before(() => {
-                SettingsMenu.PeopleSetting().click();
+            it('should allow me to invite a new user', () => {
+                Login.ExistingPassiveMonitoringUserLogin();
+                PeopleSettings.InviteSomeoneElement().click();
+                
             });
-            it('should allow me to invite a new user');
             it('should allow me to edit primary person');
             it('should allow me to edit Administrators');
-
         });
     });
     

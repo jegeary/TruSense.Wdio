@@ -9,37 +9,68 @@ import DeviceDetails from '../../../../pages/customer-app/home-details/device-de
 import SettingsMenu from '../../../../pages/customer-app/settings/settings.menu';
 import AccountSettings from '../../../../pages/customer-app/settings/account-settings.page';
 import { before } from 'mocha';
+import NotificationSettings from 'test/web/pages/customer-app/settings/notification-settings.page';
+import errorMessages from 'test/web/pages/shared/error.messages';
 
 describe('Notification Settings Page', () => {
-    before(() => {
-        help.SetupEnvironment(constants.LoginUrl);
-        help.LoginPassiveMonitoring();
-    });
     context('when I click into the settings page', () => {
-        before(() => {
-            UserAppMenu.MenuSettingElementXPath().click();
-        });
         context('and click into the Notification settings page', () => {
-            before(() => {
-                SettingsMenu.NotificationsSetting().click();
+            it('should allow me to switch toggles', () => {
+                Login.ExistingPassiveMonitoringUserLogin();
+                NotificationSettings.open();
+                NotificationSettings.EmergencyCenterToggle()[0];
+                expect(errorMessages.CheckForGlobalMessageAlert()).to.be.true;
+
             });
-            it('should allow me to switch toggles');
             context('when adding users to', () => {
                 context('text notifications', () => {
-                    it('should allow me to add existing users');
-                    it('should allow me to add a new user');
+                    it('should allow me to add and remove existing users', () => {
+                        NotificationSettings.TextLowBatteryDetected().click();
+                        NotificationSettings.SelectExistingPerson();
+                        expect(NotificationSettings.profileContactCard().isDisplayed()).to.be.true;
+                        NotificationSettings.clearAllContacts().click();
+                        NotificationSettings.clearAllContactsConfirm().click();
+                        expect(NotificationSettings.profileContactCard().isDisplayed()).to.be.false;
+                    });
+                    it('should allow me to add and remove a new user', () => {
+                        NotificationSettings.FirstName().setValue('Roberta');
+                        NotificationSettings.LastName().setValue('Chimsman');
+                        NotificationSettings.MobileNumber().setValue('5005550006');
+                        NotificationSettings.addNewContact().click();
+                        expect(NotificationSettings.profileContactCard().isDisplayed()).to.be.true;
+                        NotificationSettings.clearAllContacts().click();
+                        NotificationSettings.clearAllContactsConfirm().click();
+                        expect(NotificationSettings.profileContactCard().isDisplayed()).to.be.false;
+
+                    });
                 });
                 context('email notifications', () => {
-                    it('should allow me to add existing users');
-                    it('should allow me to add a new user');
+                    it('should allow me to add and remove existing users');
+                    it('should allow me to add and remove a new user');
                 });
                 context('call notifications', () => {
-                    it('should allow me to add existing users');
-                    it('should allow me to add a new user');
+                    it('should allow me to add and remove existing users', () => {
+                        NotificationSettings.CallTrackerRemoved().click();
+                        NotificationSettings.SelectExistingPerson();
+                        expect(NotificationSettings.profileContactCard().isDisplayed()).to.be.true;
+                        NotificationSettings.clearAllContacts().click();
+                        NotificationSettings.clearAllContactsConfirm().click();
+                        expect(NotificationSettings.profileContactCard().isDisplayed()).to.be.false;
+                    });
+                    it('should allow me to add and remove a new user', () => {
+                        NotificationSettings.FirstName().setValue('Chimsman');
+                        NotificationSettings.LastName().setValue('Roberta');
+                        NotificationSettings.MobileNumber().setValue('5005550006');
+                        NotificationSettings.addNewContact().click();
+                        expect(NotificationSettings.profileContactCard().isDisplayed()).to.be.true;
+                        NotificationSettings.clearAllContacts().click();
+                        NotificationSettings.clearAllContactsConfirm().click();
+                        expect(NotificationSettings.profileContactCard().isDisplayed()).to.be.false;
+
+                    });
                 });
                 context('push notifications', () => {
-                    it('should allow me to add existing users');
-                    it('should allow me to add a new user');
+                    it('should allow me to add and remove existing users');
                 });
             })
         });

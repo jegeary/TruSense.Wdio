@@ -19,7 +19,7 @@ class AssociateSubscriptionCodePage extends Page {
         return $("//*[@data-selenium='subscription-code-imei']");
     }    
     open() {
-        super.open('/home')
+        super.open('/manage/subscription-codes/associate');
     }
     //SubscriptionLengthSelect
 }

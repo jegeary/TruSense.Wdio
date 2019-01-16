@@ -27,7 +27,7 @@ class SettingsMenu extends Page {
         return $("//*[@data-selenium='settings-username']");
     }    
     open() {
-        super.open('/home')
+        super.open('/settings')
     }
 }
 export default new SettingsMenu();

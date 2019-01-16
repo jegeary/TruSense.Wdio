@@ -10,8 +10,7 @@ import Timeline from '../../../pages/customer-app/timeline.page';
 
 describe('Timeline Page', () => {
     it('should allow me to Scroll timeline', () => {
-        help.SetupEnvironment(constants.LoginUrl);
-        help.LoginPassiveMonitoring();
+        Login.ExistingPassiveMonitoringUserLogin();
         UserAppMenu.MenuTimelineElementXPath().click();
         const eventCard = Timeline.EventCards;
         eventCard()[3].click()

@@ -9,7 +9,7 @@ class MembersPage extends Page {
         return $(Selector.partialLinkText('Invite Members'));
     }    
     open() {
-        super.open('/home')
+        super.open('/employer/members');
     }
     
 }

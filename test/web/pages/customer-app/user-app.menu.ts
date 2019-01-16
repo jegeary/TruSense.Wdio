@@ -1,6 +1,6 @@
 import Page from "../page";
 
-class UserAppMenu extends Page {
+class UserAppMenu {
 
     MenuSettingElementXPath(): WebdriverIO.Element<void> {
         return $("//*[@data-selenium='menu-Settings']");
@@ -23,9 +23,6 @@ class UserAppMenu extends Page {
     MenuHealthElementXPath(): WebdriverIO.Element<void> {
         return $("//*[@data-selenium='menu-Health']");
     }    
-    open() {
-        super.open('/home')
-    }
 
 }
 export default new UserAppMenu();

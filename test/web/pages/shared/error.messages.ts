@@ -12,10 +12,12 @@ class ErrorMessages extends Page{
     }
     GlobalMessageAlert(): WebdriverIO.Element<void> {
         return $(Selector.class('alert-content'));
-    }    
-    open() {
-        super.open('/home')
+    }  
+    
+    CheckForGlobalMessageAlert(): boolean {
+        return this.GlobalMessageAlert().isDisplayed();
     }
+    
 }
 export default new ErrorMessages();
 

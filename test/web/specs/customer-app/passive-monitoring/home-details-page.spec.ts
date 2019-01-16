@@ -7,19 +7,14 @@ import UserAppMenu from '../../../pages/customer-app/user-app.menu';
 import HomeDetails from '../../../pages/customer-app/home-details/home-details.page';
 import ErrorMessages from '../../../pages/shared/error.messages';
 import homeDetailsPage from '../../../pages/customer-app/home-details/home-details.page';
+import Login from '../../../pages/shared/login.page';
 
 describe('Home Details Page', () => {
-   before(() => {
-       console.log("Before I click on the edit details icon")
-       console.log('****************************************' + '\n')
-       help.SetupEnvironment(constants.LoginUrl);
-       help.LoginPassiveMonitoring();
-       UserAppMenu.MenuHomeElementXPath().click();
-   });
-    
     context('when I click on the edit details icon', () => {
         context('and clear the inputs', () => {
             it('should not allow the form to submit', () => {
+                Login.ExistingPassiveMonitoringUserLogin();
+                UserAppMenu.MenuHomeElementXPath().click();
                 homeDetailsPage.EditDetails().click();
                 homeDetailsPage.EditPhone().clearValue();
                 homeDetailsPage.EditAddress().clearValue();

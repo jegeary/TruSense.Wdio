@@ -78,7 +78,7 @@ exports.config = {
     // Define all options that are relevant for the WebdriverIO instance here
     //
     // Level of logging verbosity: trace | debug | info | warn | error
-     logLevel: 'silent',
+    logLevel: 'silent',
     //
     // Warns when a deprecated command is used
     deprecationWarnings: true,
@@ -128,11 +128,12 @@ exports.config = {
     // See the full list at http://mochajs.org/
     mochaOpts: {
         ui: 'bdd',
-        timeout: 60000,
+        timeout: 6000000,
+        retries: 3,
         compilers: [
             'ts-node/register',
             'tsconfig-paths/register'
-        ],
+        ]
     },
     //
     // =====

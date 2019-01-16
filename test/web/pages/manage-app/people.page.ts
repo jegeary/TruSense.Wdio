@@ -15,7 +15,7 @@ class PeoplePage extends Page {
         return $$(Selector.class('datatable-row-wrapper'));
     }    
     open() {
-        super.open('/home')
+        super.open('/manage/people')
     }
 }
 const People = new PeoplePage;

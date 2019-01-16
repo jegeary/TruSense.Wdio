@@ -5,8 +5,8 @@ import constants from "./constants";
 
 class Helpers {
     emailNumber = this.randomNumber(1, 999);
-    preloader(): WebdriverIO.Element<void> {
-        return $(Selector.id('preloader'));
+    preloader(): boolean {
+        return $(Selector.id('preloader')).isDisplayed();
     }
     randomNumber(min: number, max: number): number {
         return Math.floor(Math.random() * (max - min + 1) + min);
@@ -17,14 +17,14 @@ class Helpers {
         this.WaitForPageLoad();
     }
     LoginPassiveMonitoring(): void {
-        LoginPage.open();
         LoginPage.ExistingPassiveMonitoringUserLogin();
         pulse.open();
         pulse.LocalWeather().waitForExist();
     }
 
-    WaitForPageLoad(): void {
-        if($(Selector.id('preloader')).isDisplayed()){
+    
+    WaitForPageLoad() {
+        if(!this.preloader()){
             $(Selector.id('preloader')).waitForDisplayed(500, true);
         }
     }

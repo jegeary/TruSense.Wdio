@@ -7,7 +7,7 @@ class SubscriptionCodePage extends Page {
         return $(Selector.linkText('Associate Subscription Codes'));
     }    
     open() {
-        super.open('/home')
+        super.open('/manage/subscription-codes');
     }
 }
 const SubscriptionCode = new SubscriptionCodePage;

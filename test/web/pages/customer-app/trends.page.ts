@@ -22,7 +22,7 @@ class TrendsPage extends Page {
         return $$("//*[@data-selenium='trend-pie-chart-Active Minutes']");
     }    
     open() {
-        super.open('/home')
+        super.open('/trends')
     }
           
 }

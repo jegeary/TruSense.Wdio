@@ -5,7 +5,7 @@ export default class Page {
         
      }
 
-    open(path: string): void {
+    open(path: string, id?: number): void {
         browser.maximizeWindow();
         browser.url('https://app-staging.mytrusense.com' + path);
         help.WaitForPageLoad();

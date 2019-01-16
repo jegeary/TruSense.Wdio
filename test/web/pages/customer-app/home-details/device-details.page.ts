@@ -8,8 +8,8 @@ class DeviceDetailsPage extends Page {
         return $(Selector.name('deviceName'));
     }
     SaveButton = constants.ButtonSuccess;    
-    open() {
-        super.open('/home')
+    open(path: string = '/home/device/', deviceId: number) {
+        super.open(path + deviceId)
     }
 }
 const DeviceDetails = new DeviceDetailsPage;

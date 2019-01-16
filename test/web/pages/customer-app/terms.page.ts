@@ -13,7 +13,7 @@ class TermsPage extends Page {
         return $(Selector.elementWithPartialTextClass('btn-success', 'Submit'));
     }    
     open() {
-        super.open('/home')
+        super.open('/terms')
     }
         
 }

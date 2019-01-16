@@ -9,7 +9,7 @@ class GoalsPage extends Page {
         return $(Selector.id('goalPerWeek[2]'));
     }    
     open() {
-        super.open('/home')
+        super.open('/employer/goals')
     }
 }
 const Goals = new GoalsPage();

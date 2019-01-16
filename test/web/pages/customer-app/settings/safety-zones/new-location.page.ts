@@ -51,7 +51,7 @@ class NewLocationPage extends Page {
         return $(Selector.name('title'));
     }    
     open() {
-        super.open('/home')
+        super.open('/settings/safety-zones/new')
     }
     
 }

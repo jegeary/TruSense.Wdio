@@ -6,7 +6,7 @@ class SafetyZonesPage extends Page {
         return $("//*[@data-selenium='gps-tripCard']");
     }    
     open() {
-        super.open('/home')
+        super.open('/gps')
     }
         
 }

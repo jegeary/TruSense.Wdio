@@ -18,7 +18,7 @@ class SafetZonesSettingsPage extends Page {
         return $(Selector.class('locations-card'));
     }    
     open() {
-        super.open('/home')
+        super.open('/settings/safety-zones');
     }
 }
 const SafetZonesSettings = new SafetZonesSettingsPage;
