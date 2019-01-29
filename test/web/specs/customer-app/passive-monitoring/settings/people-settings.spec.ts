@@ -9,15 +9,16 @@ import DeviceDetails from '../../../../pages/customer-app/home-details/device-de
 import SettingsMenu from '../../../../pages/customer-app/settings/settings.menu';
 import AccountSettings from '../../../../pages/customer-app/settings/account-settings.page';
 import { before } from 'mocha';
-import PeopleSettings from 'test/web/pages/customer-app/settings/people-settings.page';
+import PeopleSettings from '../../../../pages/customer-app/settings/people-settings.page';
+import errorMessages from '../../../../pages/shared/error.messages';
 
 describe('People Settings Page', () => {
     context('when I click into the settings page', () => {
         context('and click into the People settings page', () => {
             it('should allow me to invite a new user', () => {
                 Login.ExistingPassiveMonitoringUserLogin();
-                PeopleSettings.InviteSomeoneElement().click();
-                
+                PeopleSettings.InviteNewUser('Bobby', 'Jindal', '5005550006', true, 'bobby.jindal@gov.net')
+                expect(errorMessages.CheckForGlobalMessageAlert()).to.be.true;
             });
             it('should allow me to edit primary person');
             it('should allow me to edit Administrators');

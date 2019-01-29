@@ -9,7 +9,7 @@ import DeviceDetails from '../../../../pages/customer-app/home-details/device-de
 import SettingsMenu from '../../../../pages/customer-app/settings/settings.menu';
 import AccountSettings from '../../../../pages/customer-app/settings/account-settings.page';
 import { before } from 'mocha';
-import errorMessages from 'test/web/pages/shared/error.messages';
+import errorMessages from '../../../../pages/shared/error.messages';
 
 describe('Account Settings Page', () => {
     //before(() => {
